@@ -24,9 +24,16 @@ group :test do
   gem 'chromedriver-helper'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'bootstrap', '~> 4.0.0'
+#Bootstrap and jquery needed for the view
+gem "bootstrap", ">= 4.1.2"
 gem 'devise'
 gem 'jquery-rails'
 group :development do
   gem 'rails_layout'
 end
+
+#For storing avatar image
+gem 'carrierwave', '~> 1.0'
+
+#Install visualizer - does not work on AWS!
+#gem 'rails-erd', group: :development
