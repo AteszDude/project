@@ -1,0 +1,13 @@
+<h1>Add new match</h1>
+
+<%= form_tag :action => 'create' do %>
+<p><label for = "person1_id">Id1</label>:
+<%= text_field 'match', 'person1_id' %></p>
+
+<p><label for = "person2_id">Id2</label>:
+<%= text_field 'match', 'person2_id' %></p>
+
+<%= submit_tag "Create" %>
+
+<% end -%>
+<%= link_to 'Back', {:action => 'list'} %>

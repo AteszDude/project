@@ -1,0 +1,2 @@
+class Semimatch < ApplicationRecord
+end

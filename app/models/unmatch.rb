@@ -1,0 +1,2 @@
+class Unmatch < ApplicationRecord
+end
