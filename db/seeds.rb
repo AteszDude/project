@@ -5,13 +5,28 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
+require 'faker'
 
-User.create!([
-  {name: "aaa", email: "a@a.a", password: "aaaaaa", password_confirmation: "aaaaaa", current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"},
-  {name: "bbb", email: "b@b.b", password: "bbbbbb", password_confirmation: "bbbbbb", current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"},
-  {name: "ccc", email: "c@c.c", password: "cccccc", password_confirmation: "cccccc", current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"}
-])
+#user = CreateAdminService.new.call
+#puts 'CREATED ADMIN USER: ' << user.email
 
-Match.create(1, 2, "2019-02-06 14:02:10")
+#User.create!([
+#  {name: "aaa", email: "a@a.a", password: "aaaaaa", password_confirmation: "aaaaaa", current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"},
+#  {avatar:'avatar-female.jpg', name: "bbb", email: "b@b.b", password: "aaaaaa", password_confirmation: "aaaaaa", current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"},
+#  {name: "ccc", email: "c@c.c", password: "aaaaaa", password_confirmation: "aaaaaa", current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"}
+#])
+
+#Match.create(:person1_id => 1, :person2_id => 2, :time => "2019-02-06 14:02:10")
+#Match.create(:person1_id => 1, :person2_id => 3, :time => "2019-02-06 14:02:10")
+
+Faker::Config.random = Random.new(42)
+
+100.times do
+  User.create(name: Faker::Name.name, email: Faker::Internet.email,
+  description: Faker::Games::WorldOfWarcraft.quote, sex: rand(1..3), match_sex: rand(1..3), likes: rand(1..6),
+  password: "aaaaaa", password_confirmation: "aaaaaa", current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1")
+end
+
+100.times do
+  Match.create(:person1_id => rand(1..49), :person2_id => rand(50..99), :time => "2019-02-06 14:02:10")
+end

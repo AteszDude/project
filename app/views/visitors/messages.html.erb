@@ -18,9 +18,11 @@
 </nav>
 
 <h3>Messages</h3>
-
-<td>
-   <% current_user.getmatches.each do |person| %>
-        <td><li class="round-image-50"><%= image_tag(person.avatar.url) %></li></td>
-   <% end %></li></td>
-   
+<table>
+  <% current_user.getmatches.each do |person| %>
+  <tr>
+    <td><li class="round-image-50"><%= image_tag(person.avatar.url) %></li></td>
+    <td><strong><%= person.id %> <%= person.name %> <%= person.email %></strong></td>
+  </tr>    
+  <% end %></li>
+</table>

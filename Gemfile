@@ -37,3 +37,7 @@ gem 'carrierwave', '~> 1.0'
 
 #Install visualizer - does not work on AWS!
 #gem 'rails-erd', group: :development
+
+
+#Generating random test data
+gem 'faker'

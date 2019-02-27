@@ -35,5 +35,10 @@ class User < ApplicationRecord
     @allusers = @allusers - getmatches
     @allusers = @allusers - [self]
   end
+
+  def getlikedby
+    Semimatch.where(person2_id: self.id)
+  end
+
   
 end

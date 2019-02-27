@@ -17,9 +17,24 @@
   </form>
 </nav>
 
-<h3>Potentials</h3>
-   <td>
+<h3>Potential matches</h3>
+<table>
+  <tr>
    <% current_user.getpotentials.each do |person| %>
-        <td><li class="round-image-50"><%= image_tag(person.avatar.url) %></li></td>
-   <% end %></li></td>
-   
+        <td>
+        <li class="round-image-50"><%= image_tag(person.avatar.url) %></li>
+        <strong><%= person.id %> - <%= person.email %> </strong>
+          <table>
+          <tr>
+          <td><li class="round-image-50"><img src="images/yes.png">Yes</img></li></td>
+          <td><li class="round-image-50"><img src="images/no.png">Yes</img></li></td>
+          </tr>
+          </table>
+        </li>
+        </td>
+   <% end %>
+  </tr>
+</table>
+
+<h3>Liked by</h3>
+
