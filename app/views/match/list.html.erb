@@ -6,9 +6,7 @@
 <ul id = "match">
    <% @matches.each do |match| %>
         <td><%= match.person1_id %></td>
-        <td><%= image_tag(match.person1.name) %>
         <td><%= match.person2_id %></td>
-        <td><%= image_tag(match.person2_id.avatar.ul) %>        
         <td><%= match.time %></td>
    <% end %>
 </ul>
