@@ -16,25 +16,35 @@ class User < ApplicationRecord
   
   #TODO: refactor  
   def getmatches
-  @allpersons = []
-  @allmatches = Match.where(person1_id: self.id)
-     @allmatches.each do |t|
-       @allpersons = @allpersons + (User.where(id: t.person2_id))
+    allpersons = []
+    allmatches = Match.where(person1_id: self.id)
+     allmatches.each do |t|
+       allpersons = allpersons + (User.where(id: t.person2_id))
      end
      
-  @allmatches = Match.where(person2_id: self.id)
-     @allmatches.each do |t|
-       @allpersons = @allpersons + (User.where(id: t.person1_id))
+  allmatches = Match.where(person2_id: self.id)
+     allmatches.each do |t|
+       allpersons = allpersons + (User.where(id: t.person1_id))
      end
      
-     return @allpersons
+     return allpersons
   end
 
   def getpotentials
-    @allusers = User.all
-    @allusers = @allusers - getmatches
-    @allusers = @allusers - [self]
+    allusers = User.all
+    allusers = allusers - getmatches
+    allusers = allusers - [self]
   end
+
+  def getsentlikes
+    likedpersons = []
+    semimatches = Semimatch.where(person1_id: self.id)
+      semimatches.each do |t|
+      likedpersons = likedpersons + (User.where(id: t.person2_id))
+     end
+    return likedpersons
+  end
+
 
   def getlikedby
     Semimatch.where(person2_id: self.id)
