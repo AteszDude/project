@@ -7,8 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   mount_uploader :avatar, AvatarUploader
-  has_many :matches
-  has_many :users, through: :matches
+#  has_many :matches
+#  has_many :users, through: :matches
   
   #validates_presence_of   :avatar
   #validates_integrity_of  :avatar
@@ -50,5 +50,8 @@ class User < ApplicationRecord
     Semimatch.where(person2_id: self.id)
   end
 
+  def testgetmatches()
+    Match.last(20)
+  end
   
 end

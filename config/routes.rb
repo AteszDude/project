@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'match/show'
   get 'match/delete'
 
+  put 'match/like', to: 'visitors#like'
+  put 'like', to: 'visitors#like'
+
   get 'matches', to: 'visitors#matches'
   get 'messages', to: 'visitors#messages'
   get 'settings', to: 'visitors#settings'

@@ -2,20 +2,14 @@ class VisitorsController < ApplicationController
 
   #Ajax request after pressing the like buton 
   def like()
-  #Copied content
-  @content = Content.find(params[:id])
-  @content.liked_by current_user
+    Rails.logger = Logger.new(STDOUT)
+    logger.debug "CREATING NEW MATCH!!!!!!!!!!"
 
-  if request.xhr?
-    head :ok
-  else
-    redirect_to @content
-  end
-
+    Match.create(:person1_id => 2, :person2_id => 6, :time => Time.now)
   end
   
   #Ajax request after pressing the dislike buton 
   def dislikebutton()
   end
-  
+
 end
