@@ -27,7 +27,7 @@
           <table>
           <tr>
           <td>
-          <%= link_to "Like", "like", method: :put, remote: true %>
+          <%= link_to "Like", 'like?' + {person1_id:current_user.id, person2_id: person.id}.to_param, method: :post, remote: true %>
             <li class="round-image-50"><img src="images/yes.png">Yes</img></li></td>
           <td><li class="round-image-50"><img src="images/no.png">No</img></li></td>
           </tr>

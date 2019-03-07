@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   put 'match/like', to: 'visitors#like'
   put 'like', to: 'visitors#like'
+  post 'like', to: 'visitors#like'
+
 
   get 'matches', to: 'visitors#matches'
   get 'messages', to: 'visitors#messages'

@@ -38,6 +38,8 @@ gem 'carrierwave', '~> 1.0'
 #Install visualizer - does not work on AWS!
 #gem 'rails-erd', group: :development
 
+#Geographical locations
+gem 'geocoder'
 
 #Generating random test data
 gem 'faker'
