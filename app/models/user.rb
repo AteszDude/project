@@ -53,5 +53,10 @@ class User < ApplicationRecord
   def testgetmatches()
     Match.last(20)
   end
+
+  def testgetsemimatches()
+    Semimatch.last(20)
+  end
+
   
 end

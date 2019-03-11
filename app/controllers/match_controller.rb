@@ -7,12 +7,12 @@ class MatchController < ApplicationController
    @match = Match.find(params[:id])
   end
   
-  def book_params
+  def match_params
    params.require(:books).permit(:person1_id, :person2_id)
   end  
   
   def new
-    @match = Match.new(book_params)
+    @match = Match.new(match_params)
   end
   
   def create

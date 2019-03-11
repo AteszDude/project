@@ -27,8 +27,12 @@
   
 <h3>Test print:</h3>
    <% current_user.testgetmatches.each do |testmatch| %>
-   <% testmatch.person1%> - % testmatch.person2%> <br>
+   <%= testmatch.person1_id%> - <%= testmatch.person2_id%> <br>
    <% end %>
+   <br>---<br>
+   <% current_user.testgetsemimatches.each do |testmatch| %>
+   <%= testmatch.person1_id%> - <%= testmatch.person2_id%> <br>
+   <% end %>  
   
 <% else %>
   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
