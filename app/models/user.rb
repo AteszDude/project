@@ -47,7 +47,12 @@ class User < ApplicationRecord
 
 
   def getlikedby
-    Semimatch.where(person2_id: self.id)
+    likedpersons = []
+    semimatches = Semimatch.where(person2_id: self.id)
+      semimatches.each do |t|
+      likedpersons = likedpersons + (User.where(id: t.person1_id))
+     end
+    return likedpersons
   end
 
   def testgetmatches()

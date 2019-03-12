@@ -27,9 +27,13 @@
           <table>
           <tr>
           <td>
-          <%= link_to "Like", 'semimatch?' + {person1_id:current_user.id, person2_id: person.id}.to_param, method: :post, remote: true %>
-            <li class="round-image-50"><img src="images/yes.png">Yes</img></li></td>
-          <td><li class="round-image-50"><img src="images/no.png">No</img></li></td>
+            <li class="round-image-50">
+            <%= link_to image_tag('/images/yes.png', :border=>0), 'semimatch?' + {person1_id:current_user.id, person2_id: person.id}.to_param, method: :post, remote: true %>
+            </li></td>
+          <td>
+            <li class="round-image-50">
+            <%= link_to image_tag('/images/no.png', :border=>0), 'semimatch?' + {person2_id:current_user.id, person1_id: person.id}.to_param, method: :post, remote: true %>
+            </li></td>
           </tr>
           </table>
         </li>
