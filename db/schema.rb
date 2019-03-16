@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_21_175641) do
+ActiveRecord::Schema.define(version: 2019_03_13_111401) do
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "user1_id"
+    t.integer "user2_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "matches", force: :cascade do |t|
     t.integer "person1_id"
@@ -18,6 +25,17 @@ ActiveRecord::Schema.define(version: 2019_02_21_175641) do
     t.datetime "time", null: false
     t.index ["person1_id"], name: "index_matches_on_person1_id"
     t.index ["person2_id"], name: "index_matches_on_person2_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.integer "conversation_id"
+    t.integer "user_id"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "semimatches", force: :cascade do |t|
