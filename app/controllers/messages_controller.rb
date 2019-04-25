@@ -17,7 +17,7 @@ def index
   if @messages.last.user_id != current_user.id
    @messages.last.read = true;
   end
-    render :template => "message/index"
+    render :template => "messages/index"
  end
 
 @message = @conversation.messages.new

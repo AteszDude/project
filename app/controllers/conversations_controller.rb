@@ -4,7 +4,7 @@ class ConversationsController < ApplicationController
  def index
  @users = User.all
  @conversations = Conversation.all
- render :template => "conversation/index"
+ render :template => "conversations/index"
  end
 
 def create
