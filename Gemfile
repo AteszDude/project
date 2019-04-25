@@ -43,3 +43,6 @@ gem 'geocoder'
 
 #Generating random test data
 gem 'faker'
+
+#UI CSS
+gem 'materialize-sass', '~> 1.0.0'

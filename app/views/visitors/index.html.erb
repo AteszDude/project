@@ -19,7 +19,7 @@
 
 <h3>Welcome to Heavy Metal Dating!</h3>
 <% if user_signed_in? %>
-<li class="round-image-50"><%= image_tag(current_user.avatar.url) %></li>
+<p class="round-image-50"><%= image_tag(current_user.avatar.url, alt: "default") %></p>
 
   Logged in as <strong><%= current_user.id%> <%= current_user.email%></strong>
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
@@ -33,19 +33,12 @@
    <% current_user.testgetsemimatches.each do |testmatch| %>
    <%= testmatch.person1_id%> - <%= testmatch.person2_id%> <br>
    <% end %>  
+
+   <a class="btn btn-outline-success" href="/conversations" role="button">
+   Conversations
+   </a>
   
 <% else %>
   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>  
-
-<br>Conversations:<br>
-
-
-<div class=”ui segment”>
- <h3>Mailbox</h3>
-
-      <a class="btn btn-outline-success" href="/conversations" role="button">
-      Conversations
-      </a>
-</div>

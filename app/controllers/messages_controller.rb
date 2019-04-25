@@ -17,7 +17,7 @@ def index
   if @messages.last.user_id != current_user.id
    @messages.last.read = true;
   end
-   render :template => "message/index"
+    render :template => "message/index"
  end
 
 @message = @conversation.messages.new
@@ -32,6 +32,10 @@ def create
  if @message.save
   redirect_to conversation_messages_path(@conversation)
  end
+end
+
+def show
+render :json => @messages
 end
 
 private
