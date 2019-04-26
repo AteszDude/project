@@ -33,11 +33,11 @@
    <% current_user.testgetsemimatches.each do |testmatch| %>
    <%= testmatch.person1_id%> - <%= testmatch.person2_id%> <br>
    <% end %>  
-
+   
    <a class="btn btn-outline-success" href="/conversations" role="button">
    Conversations
    </a>
-  
+
 <% else %>
   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
