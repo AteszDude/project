@@ -17,25 +17,10 @@
   </form>
 </nav>
 
-<h3>Messages</h3>
-<table>
-  <% current_user.getmatches.each do |person| %>
-  <tr>
-    <td><li class="round-image-50"><%= image_tag(person.avatar.url) %></li></td>
-    <td><strong><%= person.id %> <%= person.name %> <%= person.email %></strong></td>
-  </tr>    
-  <% end %></li>
-</table>
-
-----
-
-<br>Conversations:<br>
-
+<h3>Conversations</h3>
 
 <div class=”ui segment”>
- <h3>Mailbox</h3>
-
-      <a class="btn btn-outline-success" href="/conversations/messages" role="button">
+      <a class="btn btn-outline-success" href="/conversations" role="button">
       Conversations
       </a>
 </div>

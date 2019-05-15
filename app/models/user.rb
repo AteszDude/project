@@ -30,6 +30,10 @@ class User < ApplicationRecord
      return allpersons
   end
 
+  def getmatches_count
+    return getmatches.
+  end
+
   def getpotentials
     allusers = User.all
     allusers = allusers - getmatches
@@ -44,7 +48,6 @@ class User < ApplicationRecord
      end
     return likedpersons
   end
-
 
   def getlikedby
     likedpersons = []

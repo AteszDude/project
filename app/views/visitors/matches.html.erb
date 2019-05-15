@@ -17,6 +17,9 @@
   </form>
 </nav>
 
+You have <%= current_user.getmatches.length %> matches and you are liked by
+ <%= current_user.getlikedby.length %> persons
+
 <h3>Potential matches</h3>
 <table>
   <tr>
@@ -36,32 +39,6 @@
             </li></td>
           </tr>
           </table>
-        </li>
-        </td>
-   <% end %>
-  </tr>
-</table>
-
-<h3>You liked</h3>
-<table>
-  <tr>
-   <% current_user.getsentlikes.each do |person| %>
-        <td>
-        <li class="round-image-50"><%= image_tag(person.avatar.url) %></li>
-        <strong><%= person.id %> - <%= person.email %> </strong>
-        </li>
-        </td>
-   <% end %>
-  </tr>
-</table>
-
-<h3>Liked by</h3>
-<table>
-  <tr>
-   <% current_user.getlikedby.each do |person| %>
-        <td>
-        <li class="round-image-50"><%= image_tag(person.avatar.url) %></li>
-        <strong><%= person.id %> - <%= person.email %> </strong>
         </li>
         </td>
    <% end %>
