@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="/">Our Logo</a>
+  <a class="navbar-brand" href="/"><img src="images/logo.png" width="110" height="85"></a>
   <form class="form-inline">
     <a class="btn btn-outline-primary" href="profile" role="button">
     Profile
@@ -11,7 +11,7 @@
     </div>
     <div style="padding-left: 10px;">
       <a class="btn btn-outline-success" href="messages" role="button">
-      Messages
+      Conversations
       </a>
     </div>
   </form>
@@ -42,3 +42,11 @@
   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>  
+
+<h3>News:</h3>
+
+<% if @blog_posts != nil %>
+<% @blog_posts.each do |blogpost| %>
+    <%= render blogpost %>
+<% end %>
+<% end %>
