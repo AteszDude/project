@@ -30,14 +30,13 @@ class User < ApplicationRecord
      return allpersons
   end
 
-  def getmatches_count
-    return getmatches.
-  end
-
   def getpotentials
-    allusers = User.all
-    allusers = allusers - getmatches
-    allusers = allusers - [self]
+    result = User.all
+    result = result - getmatches
+    result = result - [self]
+    if(result.length > 4)
+      result = result.sample(4)
+    end
   end
 
   def getsentlikes

@@ -24,9 +24,14 @@ You have <%= current_user.getmatches.length %> matches and you are liked by
 <table>
   <tr>
    <% current_user.getpotentials.each do |person| %>
+
         <td>
-        <li class="round-image-50"><%= image_tag(person.avatar.url) %></li>
-        <strong><%= person.id %> - <%= person.email %> </strong>
+          
+ <div class="card">
+  <%= image_tag(person.avatar.url) %>
+  <div class="container">
+    <h4><b>John Doe</b></h4>
+    <p><%= person.id %> - <%= person.email %></p>
           <table>
           <tr>
           <td>
@@ -39,7 +44,10 @@ You have <%= current_user.getmatches.length %> matches and you are liked by
             </li></td>
           </tr>
           </table>
-        </li>
+  
+  </div>
+</div>           
+
         </td>
    <% end %>
   </tr>
