@@ -19,18 +19,25 @@
 
 <% if user_signed_in? %>
 
+<table width=100%>
+<tr>
+<td><p align="left"><strong>Heavy Metal, Punk, Goth, Emo dating</strong></p>
+</td>
+
+<td>
 <p align="right">
   Logged in as <strong><%= current_user.email%></strong>
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 </p>  
 <% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "SIGN UP", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>  
+<% end %>
+</td>
 
-<strong>Heavy Metal, Punk, Goth, Emo dating \MM/</strong>
-
+</tr>
+</table>
 
 <h3>News</h3>
 

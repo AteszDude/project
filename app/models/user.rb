@@ -30,6 +30,10 @@ class User < ApplicationRecord
      return allpersons
   end
 
+  def getAge
+    ((Time.zone.now - birth_date.to_time) / 1.year.seconds).floor
+  end
+
   def getpotentials
     result = User.all
     result = result - getmatches
