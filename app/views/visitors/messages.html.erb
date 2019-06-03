@@ -1,21 +1,22 @@
-
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="/"><img src="images/logo.png" width="110" height="85"></a>
+  <% if user_signed_in? %>
   <form class="form-inline">
-    <a class="btn btn-outline-primary" href="/profile" role="button">
+    <a class="btn btn-outline-primary" href="profile" role="button">
     Profile
     </a>
     <div style="padding-left: 10px;">
-      <a class="btn btn-outline-success" href="/matches" role="button">
-      Matches
+      <a class="btn btn-outline-success" href="matches" role="button">
+      Swipe
       </a>
     </div>
     <div style="padding-left: 10px;">
-      <a class="btn btn-outline-success" href="/messages" role="button">
-      Messages
+      <a class="btn btn-outline-success" href="messages" role="button">
+      Message
       </a>
     </div>
   </form>
+  <% end %>
 </nav>
 
 

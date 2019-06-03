@@ -1,18 +1,111 @@
-<div class="ui segment">
-  <h3>Mailbox</h3>
-
-  <div class="ui list">
-    <div class="item">
-      <% @conversations.each do |conversation| %>
-        <% if conversation.user1_id == current_user.id || conversation.user2_id == current_user.id %>
-          <% if conversation.user1_id == current_user.id %>
-            <% recipient = User.find(conversation.user2_id) %>
-          <% else %>
-            <% recipient = User.find(conversation.user1_id) %>
-          <% end %>
-          <%= link_to recipient.name, conversation_messages_path(conversation)%>
-        <% end %>
-      <% end %>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="/"><img src="images/logo.png" width="110" height="85"></a>
+  <% if user_signed_in? %>
+  <form class="form-inline">
+    <a class="btn btn-outline-primary" href="profile" role="button">
+    Profile
+    </a>
+    <div style="padding-left: 10px;">
+      <a class="btn btn-outline-success" href="matches" role="button">
+      Swipe
+      </a>
     </div>
-  </div>
-</div>
+    <div style="padding-left: 10px;">
+      <a class="btn btn-outline-success" href="messages" role="button">
+      Message
+      </a>
+    </div>
+  </form>
+  <% end %>
+</nav>
+
+<div class="container">
+<div class="messaging">
+      <div class="inbox_msg">
+        <div class="inbox_people">
+          <div class="headind_srch">
+            <div class="recent_heading">
+              <h4>Recent</h4>
+            </div>
+            <div class="srch_bar">
+              <div class="stylish-input-group">
+                <input type="text" class="search-bar"  placeholder="Search" >
+                <span class="input-group-addon">
+                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                </span> </div>
+            </div>
+          </div>
+
+          <div class="inbox_chat">
+            <div class="chat_list active_chat">
+      <% if @conversations != nil %>
+      <% @conversations.each do |conversation| %>
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                <% if conversation.user1_id == current_user.id || conversation.user2_id == current_user.id %>
+                  <% if conversation.user1_id == current_user.id %>
+                    <% recipient = User.find(conversation.user2_id) %>
+                  <% else %>
+                    <% recipient = User.find(conversation.user1_id) %>
+                  <% end %>
+                <% end %>
+
+                  <h5><%= link_to recipient.name, conversation_messages_path(conversation)%>
+                    <span class="chat_date">Dec 25</span></h5>
+                  <p>Test, which is a new approach to have all solutions 
+                    astrology under one roof.</p>
+
+                </div>
+              </div>
+      <% end %>
+      <% end %>
+          </div>
+          </div>
+          
+        </div>
+        <div class="mesgs">
+          <div class="msg_history">
+
+      <% if @conversations != nil && @getMessages != nil%>
+          <% @getMessages.each do |message| %>
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p>
+                  <% if message.body %>
+                    <%= message.body %>
+                  <% end %>
+                </p>
+                <span class="time_date"> 11:01 AM    |    Today</span> </div>
+            </div>
+          <% end %>
+          <% end %>
+            
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p>Apollo University, Delhi, India Test</p>
+                <span class="time_date"> 11:01 AM    |    Today</span> </div>
+            </div>
+            
+            <div class="incoming_msg">
+              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>We work directly with our designers and suppliers,
+                    and sell direct to you, which means quality, exclusive
+                    products, at a price anyone can afford.</p>
+                  <span class="time_date"> 11:01 AM    |    Today</span></div>
+              </div>
+            </div>
+            
+          </div>
+          <div class="type_msg">
+            <div class="input_msg_write">
+              <input type="text" class="write_msg" placeholder="Type a message" />
+              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div></div>
