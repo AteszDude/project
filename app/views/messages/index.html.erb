@@ -1,17 +1,17 @@
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="/"><img src="images/logo.png" width="110" height="85"></a>
+  <a class="navbar-brand" href="/"><img src="../../images/logo.png" width="110" height="85"></a>
   <% if user_signed_in? %>
   <form class="form-inline">
-    <a class="btn btn-outline-primary" href="profile" role="button">
+    <a class="btn btn-outline-primary" href="../../profile" role="button">
     Profile
     </a>
     <div style="padding-left: 10px;">
-      <a class="btn btn-outline-success" href="matches" role="button">
+      <a class="btn btn-outline-success" href="../../matches" role="button">
       Swipe
       </a>
     </div>
     <div style="padding-left: 10px;">
-      <a class="btn btn-outline-success" href="messages" role="button">
+      <a class="btn btn-outline-success" href="../../messages" role="button">
       Message
       </a>
     </div>
@@ -38,8 +38,9 @@
 
           <div class="inbox_chat">
             <div class="chat_list active_chat">
-      <% if @conversations != nil %>
-      <% @conversations.each do |conversation| %>
+      <% convs = @conversations %>
+      <% if convs != nil %>
+      <% convs.each do |conversation| %>
               <div class="chat_people">
                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
@@ -59,6 +60,8 @@
                 </div>
               </div>
       <% end %>
+      <% else %>
+      Conversations is nil! (fix the controller or model!)
       <% end %>
           </div>
           </div>
@@ -89,30 +92,23 @@
             </div>
           <% end %>
 
-            <div class="outgoing_msg">
-              <div class="sent_msg">
-                <p>Apollo University, Delhi, India Test</p>
-                <span class="time_date"> 11:01 AM    |    Today</span> </div>
-            </div>
-            
-            <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-              <div class="received_msg">
-                <div class="received_withd_msg">
-                  <p>We work directly with our designers and suppliers,
-                    and sell direct to you, which means quality, exclusive
-                    products, at a price anyone can afford.</p>
-                  <span class="time_date"> 11:01 AM    |    Today</span></div>
-              </div>
-            </div>
-            
           </div>
+
+
+<%= form_for [@conversation, @message] do |f| %>
           <div class="type_msg">
             <div class="input_msg_write">
-              <input type="text" class="write_msg" placeholder="Type a message" />
-              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+              
+               <%= f.text_field :body, size: 20, value: current_user.id, class: "write_msg", placeholder: "Type a message" %>
+
+              
+              <i class="fa fa-paper-plane-o" aria-hidden="true">
+              <%= submit_tag ">", type:"submit", value:"submit", class:"msg_send_btn"  %>
+              </i>
             </div>
           </div>
+<% end %>
+          
         </div>
       </div>
 
@@ -127,24 +123,6 @@
  <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
 
-<div class="ui segment">
- <% @messages.each do |message| %>
-  <% if message.body %>
-   <% user = User.find(message.user_id) %>
-   <div class="item">
-    <div class="content">
-     <div class="header"><strong><%= user.name %></strong></div>
-      <div class="list">
-       <div class="item">
-        <i class="right triangle icon"></i>
-         <%= message.body %>
-      </div>
-    </div>
-   </div>
- </div>
- <% end %>
-<% end %>
-</div>
 
 <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
  <div class="field">
@@ -152,7 +130,7 @@
  </div>
  <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
  <div>
-   <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
+   <%= f.submit ">", class: "msg_send_btn" %>
  </div>
 
 <% end %>

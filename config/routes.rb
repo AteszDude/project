@@ -10,7 +10,7 @@ resources :conversations do
   post 'semimatch', to: 'semimatch#create'
 
   get 'matches', to: 'visitors#matches'
-  get 'messages', to: 'visitors#messages'
+  get 'messages', to: 'conversations#index'
   get 'settings', to: 'visitors#settings'
   get 'profile', to: 'visitors#index'
   

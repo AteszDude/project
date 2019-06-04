@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action do
+  @conversations = Conversation.all
    @conversation = Conversation.find(params[:conversation_id])
   end
 
@@ -32,6 +33,7 @@ def create
   redirect_to conversation_messages_path(@conversation)
  end
 end
+
 
 def show
 render :json => @messages
