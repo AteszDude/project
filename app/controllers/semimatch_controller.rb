@@ -14,7 +14,8 @@ class SemimatchController < ApplicationController
   def create
      #Semimatch already exists
     if(Semimatch.exists?(params[:semimatch]))
-      return nil
+      redirect_back(fallback_location: root_path)
+      return
 
     #We have a match
     elsif(Semimatch.exists?(person1_id: params[:person2_id], person2_id: params[:person1_id]))
@@ -25,14 +26,15 @@ class SemimatchController < ApplicationController
           :person2_id => params[:person2_id], :time => Time.now)
     match.save
 
-    return nil
-
     #Create new semi match
     else
           match = Semimatch.new(:person1_id => params[:person1_id],
           :person2_id => params[:person2_id], :time => Time.now)
           match.save
     end
+    
+    redirect_back(fallback_location: root_path)
+
   end
   
   def delete

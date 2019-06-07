@@ -1,11 +1,12 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h1>Edit <%= resource_name.to_s.humanize %></h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <h2>Settings</h2>
+
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    E-mail: <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -13,7 +14,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    Password (leave blank if you don't want to change it)<br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
@@ -22,7 +23,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
@@ -30,6 +31,26 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
+
+
+  <h2>Profile</h2>
+
+  <div class="field">
+    Birth date: <%= f.date_field :birth_date, autofocus: true %>
+  </div>
+
+  <div class="field">
+    Gender: <%= f.select :sex, ['Male', 'Female']%>
+  </div>
+
+  <div class="field">
+    Sexuality: <%= f.select :match_sex, ['Heterosexual', 'Bisexual', 'Homosexual']%>
+  </div>
+
+  <div class="field">
+    Style: <%= f.select :likes, ['Metal', 'Gothic', 'Hardcore', 'Emo', 'Punk']%>
+  </div>  
+
 
   <div class="actions">
     <%= f.submit "Update" %>

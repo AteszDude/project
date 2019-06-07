@@ -38,9 +38,8 @@
 
           <div class="inbox_chat">
             <div class="chat_list active_chat">
-      <% convs = @conversations %>
-      <% if convs != nil %>
-      <% convs.each do |conversation| %>
+      <% if @conversations != nil %>
+      <% @conversations.each do |conversation| %>
               <div class="chat_people">
                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
@@ -53,9 +52,8 @@
                 <% end %>
 
                   <h5><%= link_to recipient.name, conversation_messages_path(conversation)%>
-                    <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
+                    <span class="chat_date"></span></h5>
+                  <p></p></p>
 
                 </div>
               </div>

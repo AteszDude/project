@@ -13,13 +13,16 @@
     <%= f.date_field :birth_date, autofocus: true %>
   </div>
 
-  <%= radio_button_tag(:sex, "male") %>
-  <%= label_tag(:male, "Male") %>
-  <%= radio_button_tag(:sex, "female") %>
-  <%= label_tag(:female, "Female") %>
+  <div class="field">
+    Gender: <%= f.select :sex, ['Male', 'Female']%>
+  </div>
 
   <div class="field">
-    <%= f.select :likes, ['metal', 'gothic', 'hardcore', 'emo', 'punk']%>
+    Sexuality: <%= f.select :match_sex, ['Heterosexual', 'Bisexual', 'Homosexual']%>
+  </div>
+
+  <div class="field">
+    Style: <%= f.select :likes, ['Metal', 'Gothic', 'Hardcore', 'Emo', 'Punk']%>
   </div>  
 
   <div class="field">

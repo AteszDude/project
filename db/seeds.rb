@@ -21,12 +21,28 @@ require 'faker'
 
 Faker::Config.random = Random.new(42)
 
-100.times do
+#Admin
+  User.create(name: "admin", email: "ateszdude@gmail.com",
+  description: Faker::Games::WorldOfWarcraft.quote, sex: 1, match_sex: 2, likes: 1,
+  password: "aaaaaa", password_confirmation: "aaaaaa",
+  current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1")
+
+#Males
+2.times do
   User.create(name: Faker::Name.name, email: Faker::Internet.email,
-  description: Faker::Games::WorldOfWarcraft.quote, sex: rand(1..3), match_sex: rand(1..3), likes: rand(1..6),
-  password: "aaaaaa", password_confirmation: "aaaaaa", current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1")
+  description: Faker::Games::WorldOfWarcraft.quote, sex: 1, match_sex: 2, likes: rand(1..3),
+  password: "aaaaaa", password_confirmation: "aaaaaa",
+  current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1")
 end
 
-100.times do
-  Match.create(:person1_id => rand(1..49), :person2_id => rand(50..99), :time => "2019-02-06 14:02:10")
+#Females
+2.times do
+  User.create(name: Faker::Name.name, email: Faker::Internet.email,
+  description: Faker::Games::WorldOfWarcraft.quote, sex: 2, match_sex: 2, likes: rand(1..3),
+  password: "aaaaaa", password_confirmation: "aaaaaa",
+  current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1")
 end
+
+#100.times do
+#  Match.create(:person1_id => rand(1..49), :person2_id => rand(50..99), :time => "2019-02-06 14:02:10")
+#end

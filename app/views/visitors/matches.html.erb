@@ -32,17 +32,17 @@ You have <%= current_user.getmatches.length %> matches and you are liked by
  <div class="card">
   <%= image_tag(person.avatar.url) %>
   <div class="container">
-    <h4><b>John Doe</b></h4>
-    <p><%= person.getAge %> - distance comes here!!!</p>
+    <h4><b><%= person.name %></b></h4>
+    <p><%= person.getAge %> </p>
           <table>
           <tr>
           <td>
             <li class="round-image-50">
-            <%= link_to image_tag('/images/yes.png', :border=>0), 'semimatch?' + {person1_id:current_user.id, person2_id: person.id}.to_param, method: :post, remote: true %>
+            <%= link_to image_tag('/images/yes.png', :border=>0), 'semimatch?' + {person1_id:current_user.id, person2_id: person.id}.to_param, method: :post, remote: false %>
             </li></td>
           <td>
             <li class="round-image-50">
-            <%= link_to image_tag('/images/no.png', :border=>0), 'semimatch?' + {person2_id:current_user.id, person1_id: person.id}.to_param, method: :post, remote: true %>
+            <%= link_to image_tag('/images/no.png', :border=>0), 'unmatch?' + {person2_id:current_user.id, person1_id: person.id}.to_param, method: :post, remote: false %>
             </li></td>
           </tr>
           </table>

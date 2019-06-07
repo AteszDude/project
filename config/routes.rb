@@ -8,6 +8,7 @@ resources :conversations do
  end  
 
   post 'semimatch', to: 'semimatch#create'
+  post 'unmatch', to: 'unmatch#create'
 
   get 'matches', to: 'visitors#matches'
   get 'messages', to: 'conversations#index'

@@ -36,9 +36,10 @@
                 <% end %>
 
                   <h5><%= link_to recipient.name, conversation_messages_path(conversation)%>
-                    <span class="chat_date">UNMATCH</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
+                    <span class="chat_date">
+                    <%= link_to "UNMATCH", 'unmatch?' + {person2_id:current_user.id, person1_id: recipient.id}.to_param, method: :post, remote: false %>
+                    </span></h5>
+                  <p></p>
 
                 </div>
               </div>
