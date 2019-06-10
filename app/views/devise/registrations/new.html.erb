@@ -25,6 +25,8 @@
     Style: <%= f.select :likes, ['Metal', 'Gothic', 'Hardcore', 'Emo', 'Punk']%>
   </div>  
 
+ Picture: <%= f.label :avatar do %> <%= f.file_field :avatar %> <%= f.hidden_field :avatar_cache %> <% end %> 
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>

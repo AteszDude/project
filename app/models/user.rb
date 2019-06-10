@@ -35,7 +35,8 @@ class User < ApplicationRecord
   end
 
   def getpotentials
-    result = User.all
+    #TODO rewrite
+    result = User.where("sex != ?", self.sex)
     result = result - getmatches
     result = result - [self]
     if(result.length > 4)

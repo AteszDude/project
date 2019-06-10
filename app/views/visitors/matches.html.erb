@@ -25,6 +25,7 @@ You have <%= current_user.getmatches.length %> matches and you are liked by
 <h3>Potential matches</h3>
 <table>
   <tr>
+  <% if current_user.getpotentials != nil %>
    <% current_user.getpotentials.each do |person| %>
 
         <td>
@@ -52,5 +53,56 @@ You have <%= current_user.getmatches.length %> matches and you are liked by
 
         </td>
    <% end %>
+   <% end %>
+
   </tr>
+</table>
+
+<table>
+  
+ <td valign="middle"> 
+  <svg width="10" height="10">
+  <rect width="10" height="10" style="fill:rgb(150,145,135);stroke-width:0" />
+</svg>
+ </td>
+ <td valign="middle"> 
+ = metal
+ </td>
+
+ <td valign="middle"> 
+  <svg width="10" height="10">
+  <rect width="10" height="10" style="fill:rgb(0,0,0);stroke-width:0" />
+</svg>
+ </td>
+ <td valign="middle"> 
+ = gothic
+ </td>
+
+ <td valign="middle"> 
+  <svg width="10" height="10">
+  <rect width="10" height="10" style="fill:rgb(10,20,220);stroke-width:0;stroke:rgb(0,0,0)" />
+</svg>
+ </td>
+ <td valign="middle"> 
+ = hardcore
+ </td>
+
+ <td valign="middle"> 
+  <svg width="10" height="10">
+  <rect width="10" height="10" style="fill:rgb(220,40,25);stroke-width:0" />
+</svg>
+ </td>
+ <td valign="middle"> 
+ = emo
+ </td>
+
+ <td valign="middle"> 
+  <svg width="10" height="10">
+  <rect width="10" height="10" style="fill:rgb(225,225,40);stroke-width:0" />
+</svg>
+ </td>
+ <td valign="middle"> 
+ = punk
+ </td>
+
 </table>
