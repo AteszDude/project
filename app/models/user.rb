@@ -9,7 +9,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 #  has_many :matches
 #  has_many :users, through: :matches
-  
+
   #validates_presence_of   :avatar
   #validates_integrity_of  :avatar
   #validates_processing_of :avatar
@@ -70,5 +70,14 @@ class User < ApplicationRecord
     Semimatch.last(20)
   end
 
+  # Setup accessible (or protected) attributes for your model
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password,
+      :password_confirmation, :remember_me, :avatar, :avatar_cache, :remove_avatar) }
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password,
+      :password_confirmation, :current_password, :avatar, :avatar_cache, :remove_avatar) }
+  end  
   
 end

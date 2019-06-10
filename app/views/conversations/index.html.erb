@@ -24,16 +24,19 @@
             <div class="chat_list active_chat">
       <% if @conversations != nil %>
       <% @conversations.each do |conversation| %>
+          <% if conversation.user1_id == current_user.id || conversation.user2_id == current_user.id %>
+            <% if conversation.user1_id == current_user.id %>
+              <% recipient = User.find(conversation.user2_id) %>
+            <% else %>
+              <% recipient = User.find(conversation.user1_id) %>
+            <% end %>
+          <% end %>
+
               <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_img">
+                  <%= image_tag(recipient.avatar.url) %>
+                </div>
                 <div class="chat_ib">
-                <% if conversation.user1_id == current_user.id || conversation.user2_id == current_user.id %>
-                  <% if conversation.user1_id == current_user.id %>
-                    <% recipient = User.find(conversation.user2_id) %>
-                  <% else %>
-                    <% recipient = User.find(conversation.user1_id) %>
-                  <% end %>
-                <% end %>
 
                   <h5><%= link_to recipient.name, conversation_messages_path(conversation)%>
                     <span class="chat_date">
