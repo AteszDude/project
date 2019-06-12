@@ -23,14 +23,14 @@ Faker::Config.random = Random.new(42)
 
 #Admin
   User.create(name: "admin", email: "ateszdude@gmail.com",
-  description: Faker::Games::WorldOfWarcraft.quote, sex: 1, match_sex: 2, likes: 1,
+  description: Faker::Games::WorldOfWarcraft.quote, sex: 1, match_sex: 1, likes: 1,
   password: "aaaaaa", password_confirmation: "aaaaaa",
   current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1")
 
 #Males
 2.times do
   User.create(name: Faker::Name.name, email: Faker::Internet.email,
-  description: Faker::Games::WorldOfWarcraft.quote, sex: 1, match_sex: 2, likes: rand(1..3),
+  description: Faker::Games::WorldOfWarcraft.quote, sex: 1, match_sex: 1, likes: rand(1..3),
   password: "aaaaaa", password_confirmation: "aaaaaa",
   current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1")
 end
@@ -38,10 +38,18 @@ end
 #Females
 2.times do
   User.create(name: Faker::Name.name, email: Faker::Internet.email,
-  description: Faker::Games::WorldOfWarcraft.quote, sex: 2, match_sex: 2, likes: rand(1..3),
+  description: Faker::Games::WorldOfWarcraft.quote, sex: 2, match_sex: 1, likes: rand(1..3),
   password: "aaaaaa", password_confirmation: "aaaaaa",
   current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1")
 end
+
+#Semimatches
+Semimatch.create(:person1_id => 2, :person2_id => 1, :time => "2019-02-06 14:02:10")
+Semimatch.create(:person1_id => 3, :person2_id => 1, :time => "2019-02-06 14:02:10")
+Semimatch.create(:person1_id => 4, :person2_id => 1, :time => "2019-02-06 14:02:10")
+Semimatch.create(:person1_id => 5, :person2_id => 1, :time => "2019-02-06 14:02:10")
+
+#end
 
 #100.times do
 #  Match.create(:person1_id => rand(1..49), :person2_id => rand(50..99), :time => "2019-02-06 14:02:10")

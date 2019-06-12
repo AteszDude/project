@@ -30,7 +30,6 @@
             <% else %>
               <% recipient = User.find(conversation.user1_id) %>
             <% end %>
-          <% end %>
 
               <div class="chat_people">
                 <div class="chat_img">
@@ -46,5 +45,10 @@
 
                 </div>
               </div>
+            
+          <% else %>
+              You have no matches! Keep swiping!
+          <% end %>
+
       <% end %>
       <% end %>

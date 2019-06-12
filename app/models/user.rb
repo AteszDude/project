@@ -31,17 +31,21 @@ class User < ApplicationRecord
   end
 
   def getAge
+    if(birth_date != nil)
     ((Time.zone.now - birth_date.to_time) / 1.year.seconds).floor
+  end
   end
 
   def getpotentials
-    #TODO rewrite
     result = User.where("sex != ?", self.sex)
     result = result - getmatches
     result = result - [self]
+
     if(result.length > 4)
       result = result.sample(4)
     end
+ 
+    return result
   end
 
   def getsentlikes
@@ -75,9 +79,11 @@ class User < ApplicationRecord
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password,
-      :password_confirmation, :remember_me, :avatar, :avatar_cache, :remove_avatar) }
+      :password_confirmation, :remember_me, :avatar, :avatar_cache, :remove_avatar,
+      :birth_date, :likes, :sex, :match_sex) }
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password,
-      :password_confirmation, :current_password, :avatar, :avatar_cache, :remove_avatar) }
+      :password_confirmation, :current_password, :avatar, :avatar_cache, :remove_avatar,
+      :birth_date, :likes, :sex, :match_sex) }
   end  
   
 end
