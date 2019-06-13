@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_13_195432) do
+ActiveRecord::Schema.define(version: 2019_06_13_161849) do
 
   create_table "blog_posts", force: :cascade do |t|
     t.text "body"
@@ -82,11 +82,11 @@ ActiveRecord::Schema.define(version: 2019_05_13_195432) do
     t.datetime "birth_date"
     t.integer "geoloc"
     t.text "description"
-    t.integer "likes"
+    t.integer "style"
     t.integer "sex"
-    t.integer "match_sex"
-    t.integer "match_age_min"
-    t.integer "match_age_max"
+    t.integer "sexuality"
+    t.integer "age_min"
+    t.integer "age_max"
     t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

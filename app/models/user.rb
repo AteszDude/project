@@ -2,6 +2,7 @@ require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 
 class User < ApplicationRecord
+    include ActionController::Helpers
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,6 +14,10 @@ class User < ApplicationRecord
   #validates_presence_of   :avatar
   #validates_integrity_of  :avatar
   #validates_processing_of :avatar
+  
+  enum sex: { male: 0, female: 1 }
+  enum sexuality: { heterosexual: 0, homosexual: 1, bisexual: 2}
+  enum style: { metal: 0, gothic: 1, hardcore: 2, emo: 3, punk: 4}
   
   #TODO: refactor  
   def getmatches
@@ -33,7 +38,7 @@ class User < ApplicationRecord
   def getAge
     if(birth_date != nil)
     ((Time.zone.now - birth_date.to_time) / 1.year.seconds).floor
-  end
+    end
   end
 
   def getpotentials
@@ -73,17 +78,5 @@ class User < ApplicationRecord
   def testgetsemimatches()
     Semimatch.last(20)
   end
-
-  # Setup accessible (or protected) attributes for your model
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password,
-      :password_confirmation, :remember_me, :avatar, :avatar_cache, :remove_avatar,
-      :birth_date, :likes, :sex, :match_sex) }
-    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password,
-      :password_confirmation, :current_password, :avatar, :avatar_cache, :remove_avatar,
-      :birth_date, :likes, :sex, :match_sex) }
-  end  
   
 end
