@@ -11,9 +11,9 @@ class User < ApplicationRecord
 #  has_many :matches
 #  has_many :users, through: :matches
 
-  #validates_presence_of   :avatar
-  #validates_integrity_of  :avatar
-  #validates_processing_of :avatar
+  validates_presence_of   :avatar
+  validates_integrity_of  :avatar
+  validates_processing_of :avatar
   
   enum sex: { male: 0, female: 1 }
   enum sexuality: { heterosexual: 0, homosexual: 1, bisexual: 2}

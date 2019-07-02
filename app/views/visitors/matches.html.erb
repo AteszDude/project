@@ -1,61 +1,56 @@
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="/"><img src="images/logo.png" width="110" height="85"></a>
-  <% if user_signed_in? %>
-  <form class="form-inline">
-    <a class="btn btn-outline-primary" href="profile" role="button">
-    Profile
-    </a>
-    <div style="padding-left: 10px;">
-      <a class="btn btn-outline-success" href="matches" role="button">
-      Swipe
-      </a>
-    </div>
-    <div style="padding-left: 10px;">
-      <a class="btn btn-outline-success" href="messages" role="button">
-      Message
-      </a>
-    </div>
-  </form>
-  <% end %>
+    <a class="navbar-brand" href="/"><img src="images/logo.png" width="110" height="85"></a>
+    <% if user_signed_in? %>
+    <form class="form-inline">
+        <a class="btn btn-outline-primary" href="profile" role="button">
+        Profile
+        </a>
+        <div style="padding-left: 10px;">
+            <a class="btn btn-outline-success" href="matches" role="button">
+            Swipe
+            </a>
+        </div>
+        <div style="padding-left: 10px;">
+            <a class="btn btn-outline-success" href="messages" role="button">
+            Message
+            </a>
+        </div>
+    </form>
+    <% end %>
 </nav>
-
 You have <%= current_user.getmatches.length %> matches and you are liked by
- <%= current_user.getlikedby.length %> persons
-
+<%= current_user.getlikedby.length %> persons
 <h3>Potential matches</h3>
 <table>
-  <tr>
-  <% if current_user.getpotentials != nil %>
-   <% current_user.getpotentials.each do |person| %>
-
+    <tr>
+        <% if current_user.getpotentials != nil %>
+        <% current_user.getpotentials.each do |person| %>
         <td>
-          
- <div class="card">
-  <%= image_tag(person.avatar.url) %>
-  <div class="container">
-    <h4><b><%= person.name %></b></h4>
-    <p><%= person.getAge %> </p>
-          <table>
-          <tr>
-          <td>
-            <li class="round-image-50">
-            <%= link_to image_tag('/images/yes.png', :border=>0), 'semimatch?' + {person1_id:current_user.id, person2_id: person.id}.to_param, method: :post, remote: false %>
-            </li></td>
-          <td>
-            <li class="round-image-50">
-            <%= link_to image_tag('/images/no.png', :border=>0), 'unmatch?' + {person2_id:current_user.id, person1_id: person.id}.to_param, method: :post, remote: false %>
-            </li></td>
-          </tr>
-          </table>
-  
-  </div>
-</div>           
-
+            <div class="card">
+                <%= image_tag(person.avatar.url) %>
+                <div class="container">
+                    <h4><b><%= person.name %></b></h4>
+                    <p><%= person.getAge %> </p>
+                    <table>
+                        <tr>
+                            <td>
+                                <li class="round-image-50">
+                                    <%= link_to image_tag('/images/yes.png', :border=>0), 'semimatch?' + {person1_id:current_user.id, person2_id: person.id}.to_param, method: :post, remote: false %>
+                                </li>
+                            </td>
+                            <td>
+                                <li class="round-image-50">
+                                    <%= link_to image_tag('/images/no.png', :border=>0), 'unmatch?' + {person2_id:current_user.id, person1_id: person.id}.to_param, method: :post, remote: false %>
+                                </li>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </td>
-   <% end %>
-   <% end %>
-
-  </tr>
+        <% end %>
+        <% end %>
+    </tr>
 </table>
 
 <table>

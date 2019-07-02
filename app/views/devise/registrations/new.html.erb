@@ -1,6 +1,6 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
@@ -9,20 +9,19 @@
   </div>
 
   <div class="field">
-    <%= f.label :birth_date %><br />
-    <%= f.date_field :birth_date, autofocus: true %>
+    Birth date: <%= f.date_field :birth_date, autofocus: true %>
   </div>
 
   <div class="field">
-    Gender: <%= f.select :sex, ['Male', 'Female']%>
+    Gender: <%= f.select(:sex, User.sexes.keys.map {|sex| [sex.titleize,sex]}) %>
   </div>
 
   <div class="field">
-    Sexuality: <%= f.select :match_sex, ['Heterosexual', 'Bisexual', 'Homosexual']%>
+    Sexuality: <%= f.select(:sexuality, User.sexualities.keys.map {|sexuality| [sexuality.titleize,sexuality]}) %>
   </div>
 
   <div class="field">
-    Style: <%= f.select :likes, ['Metal', 'Gothic', 'Hardcore', 'Emo', 'Punk']%>
+    Style: <%= f.select(:style, User.styles.keys.map {|style| [style.titleize,style]}) %>
   </div>  
 
  Picture: <%= f.label :avatar do %> <%= f.file_field :avatar %> <%= f.hidden_field :avatar_cache %> <% end %> 
