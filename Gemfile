@@ -36,15 +36,15 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Bootstrap and jquery needed for the view
-gem "bootstrap", ">= 4.1.2"
-gem 'devise'
+gem "bootstrap", ">= 4.3.1"
+gem "devise", ">= 4.6.0"
 gem 'jquery-rails'
 
 #For storing avatar image
 gem 'carrierwave', '~> 1.0'
 
 #Resizing avatar image
-gem 'mini_magick'
+gem "mini_magick", ">= 4.9.4"
 
 #Install visualizer - does not work on AWS!
 #gem 'rails-erd', group: :development
